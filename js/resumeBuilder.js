@@ -2,15 +2,15 @@
 var bio = {
   "name" : "Erika LeBlanc",
   "role" : "Front-End Web Developer",
-  "contact" : {
+  "contacts" : {
     "mobile" : "(514)-xxx-xxxx",
     "email" : "erikalleblanc@gmail.com",
     "github" : "https://github.com/erikaleigh",
     "twitter" : "@erikalleigh",
     "location" : "Montréal"
   },
+  "welcomeMessage" : "Hello there!",
   "biopic" : "images/erika.JPG",
-  "welcome" : "Hello there!",
   "skills" : ["HTML5", "CSS3", "Photoshop/InDesign", "Communications", "Administration", "Coordination"]
 }
 
@@ -61,7 +61,7 @@ var education = {
 }
 
 var projects = {
-    "webDevProjects": [
+    "webProjects": [
       {
         "title" : "Rock Camp for Girls Website",
         "dates" : "October 2016",
@@ -69,13 +69,37 @@ var projects = {
         "image" : "images/rc-img.png"
       },
       {
-        "name" : "Udacity Project: HTML/CSS Portfolio Page",
+        "title" : "Udacity Project: HTML/CSS Portfolio Page",
         "dates" : "October 2016",
         "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "image" : "images/portfolio-img.png"
       }
     ]
 }
+
+// name and role
+
+function displayNameRole() {
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formattedName, formattedRole);
+}
+displayNameRole();
+
+// contact info
+
+function displayContacts () {
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+$("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation, formattedBioPic, formattedWelcomeMsg);
+}
+displayContacts();
 
 // skils info
 
@@ -95,37 +119,70 @@ if (bio.skills.length > 0) {
   $("#skills").append(formattedSkill);
 }
 
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(formattedName, formattedRole);
-
 // work info
 
-  for (job in work.jobs) {
+  function displayWork() {
+  for (var i = 0; i < work.jobs.length; i++) {
   $("#workExperience").append(HTMLworkStart);
 
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].name);
-  var formattedworkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-  var formattedworkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-  var formattedworkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-  var formattedworkDescription = HTMLworkLocation.replace("%data", work.jobs[job].description);
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].name);
+  var formattedworkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
   var formattedEmployerTitle = formattedEmployer + formattedworkTitle;
+  $(".work-entry:last").append(formattedEmployerTitle);
+  var formattedworkDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+  $(".work-entry:last").append(formattedworkDates);
+  var formattedworkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+  $(".work-entry:last").append(formattedworkLocation);
+  var formattedworkDescription = HTMLworkLocation.replace("%data", work.jobs[i].description);
+  $(".work-entry:last").append(formattedworkDescription);
+}
+}
 
-  $(".work-entry:last").append(formattedEmployerTitle, formattedworkDates, formattedworkLocation, formattedworkDescription);
-  }
+displayWork();
 
+// projects
 
+function displayProjects() {
+$("#projects").append(HTMLprojectStart);
+for (i = 0; i < projects.webProjects.length; i++) {
 
-// contact info
+var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.webProjects[i].title);
+$(".project-entry:last").append(formattedProjectTitle);
+var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.webProjects[i].dates);
+$(".project-entry:last").append(formattedProjectDates);
+var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.webProjects[i].description);
+$(".project-entry:last").append(formattedProjectDescription);
+var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.webProjects[i].image);
+$(".project-entry:last").append(formattedProjectImage);
+}
+}
 
-var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
-var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcome);
-var formattedEmployer = HTMLworkEmployer.replace("%data%", work.employer);
+displayProjects();
 
-$("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation, formattedBioPic, formattedWelcomeMsg);
+// map
+
+$("#mapDiv").append(googleMap);
+
+// other course stuff
+
+// clicks
+
+// $(document).click(function(loc) {
+// var x = loc.pageX;
+// var y = loc.pageY;
+//
+// logClicks(x,y);
+// })
+
+// internationalize button
+
+// function inName (name) {
+// name = name.trim().split(" ");
+// console.log(name);
+// name[1] = name[1].toUpperCase();
+// name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+//
+// return name [0] +" "+ name[1];
+//
+// }
+// $("#main").append(internationalizeButton);
