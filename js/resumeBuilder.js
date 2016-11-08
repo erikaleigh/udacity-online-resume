@@ -147,12 +147,12 @@ var projects = {
     "projects": [{
         "title": "Rock Camp for Girls Website",
         "dates": "October 2016",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit tortor et purus interdum, eget faucibus orci aliquam. Suspendisse ac lectus velit. Pellentesque sit amet laoreet nunc, ut lobortis risus. Sed vitae sagittis ipsum, quis congue neque. Nunc malesuada neque massa, at finibus nisi venenatis quis. In nibh quam, sagittis sed scelerisque et, suscipit hendrerit ipsum. Nulla a urna tellus. Donec dignissim egestas ornare. Aenean euismod urna urna. Cras auctor placerat erat vitae porta.",
         "images": ["images/rc-img.png", "images/portfolio-img.png"]
     }, {
         "title": "Udacity Project: HTML/CSS Portfolio Page",
         "dates": "October 2016",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit tortor et purus interdum, eget faucibus orci aliquam. Suspendisse ac lectus velit. Pellentesque sit amet laoreet nunc, ut lobortis risus. Sed vitae sagittis ipsum, quis congue neque. Nunc malesuada neque massa, at finibus nisi venenatis quis. In nibh quam, sagittis sed scelerisque et, suscipit hendrerit ipsum. Nulla a urna tellus. Donec dignissim egestas ornare. Aenean euismod urna urna. Cras auctor placerat erat vitae porta.",
         "images": ["images/portfolio-img.png", "images/rc-img.png"]
     }]
 };
@@ -180,27 +180,3 @@ displayProjects();
 // Google map
 
 $("#mapDiv").append(googleMap);
-
-// other course stuff
-
-// clicks
-
-// $(document).click(function(loc) {
-// var x = loc.pageX;
-// var y = loc.pageY;
-//
-// logClicks(x,y);
-// })
-
-// internationalize button
-
-// function inName (name) {
-// name = name.trim().split(" ");
-// console.log(name);
-// name[1] = name[1].toUpperCase();
-// name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-//
-// return name [0] +" "+ name[1];
-//
-// }
-// $("#main").append(internationalizeButton);
